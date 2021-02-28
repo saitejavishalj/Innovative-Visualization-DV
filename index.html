@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DV Homework #5</title>
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" />
+    <style>
+        h1{
+            text-align:center;
+            color: rgb(231, 226, 226);
+        }
+        h2{
+            text-align:center;
+            color:  rgb(231, 226, 226);
+        }
+        h3{
+            text-align:center;
+            color:  rgb(231, 226, 226);
+        }
+        h4{
+            text-align: justify;
+            color:  rgb(231, 226, 226);
+        }
+        svg {
+            border:3px rgb(231, 226, 226);
+            width: 2000px;
+            height:1300px;
+            background-image: linear-gradient(#a3833e, #522e24, #262525);
+        }
+        li{
+            text-align: justify;
+            color:  rgb(231, 226, 226);
+        }
+        .container{
+            display:flex;
+            flex:1;
+            flex-wrap: wrap;
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-left: 240px;
+            margin-right: 240px;
+            align-content: center;
+            text-align: center;
+        }
+        .node_time{
+            stroke-width: 1px;
+            opacity: 0.7;
+        }
+        .node_green {
+            stroke-width: 3px;
+            stroke:#afa184;
+            opacity: 0.9;
+        }
+        .node-label_green {
+                font-size: 0.6em;
+                text-anchor: middle;
+                text-align: center;
+                stroke-width: 2em;
+        }
+        .node_red {
+            stroke: blue;
+            stroke-width: 1px;
+            opacity: 0.7;
+        }
+        .node-label_red {
+                font-size: .4em;
+                text-anchor: middle;
+                text-align: center;
+                fill: '#522e24'
+        }
+        .link {
+            stroke: #afa184;
+            stroke-width:4px;
+            stroke-opacity: 0.7;
+            fill:black;
+        }
+        .domain{
+            stroke: linear-gradient(to left, red, rgb(97, 90, 90));
+            stroke-width: 6px;
+            border-top: 4px solid yellow;
+            border: 10px solid yellow;
+            border-radius: 5px;
+            
+        }
+        .tick line{
+            stroke: yellow;
+        }
+        .tick text{
+            fill: rgba(233, 229, 229, 0.699);
+            font-size: 1.3em;
+            font-weight: 1000;
+        }
+        .circle{
+            opacity: 1;
+        }
+        div.tooltip {	
+            position: absolute;			
+            text-align: center;			
+            width: 110px;					
+            height: 33px;					
+            padding: 2px;				
+            font: 12px sans-serif;		
+            background: lightsteelblue;	
+            border: 0px;		
+            border-radius: 8px;			
+            pointer-events: none;			
+        }
+        .sky-gradient-20 { background: linear-gradient(to top, #071B26 0%,#071B26 30%,#8A3B12 80%,#240E03 100%); }
+        .sky-gradient-05 { background: linear-gradient(to bottom, #40405c 0%,#6f71aa 80%,#8a76ab 100%); }
+        .sky-gradient-06 { background: linear-gradient(to bottom, #4a4969 0%,#7072ab 50%,#cd82a0 100%); }
+        .sky-gradient-23 { background: linear-gradient(to bottom, #00000c 80%,#150800 100%); }
+    </style>
+</head>
+<body>
+    <div class="sky-gradient sky-gradient-20">
+    <div class = 'container'>
+        <hr style='width:100%'>
+        <h2>Homework #5: Innovative Visualization</h2>
+        <h3>Sai Teja Vishal Jangala - sjangala@asu.edu - 1218332037</h3>
+        <hr style='width:100%'>
+        <h1>Visualizing Soviet Space Dogs</h1>
+        <hr style='width:100%'>
+        <h4><u><b>Description of the Visualization:</b></u> In the below visualization, I am visualizing the data of the Soviet Space Dogs. Each circle in the visualization is a soviet dog that went to space. The color of each circle in viz represents the Fate of the dog, the survived dog is represented with a green circle and the dead dog is represented with a red circle. All the circles are represented on the x-axis, and the flight dates are represented on x-axis. The last flight date of each soviet dog is recorded and represented in the visualization and the color represents the overall fate of the dog after all flight missions. The dogs that traveled together in the missions are linked with a line; the dogs that traveled more than once has more than one line passing through its circle. So, the number of lines from the circle represents the number of times the dog has traveled in space. The dogs that are above the time axis (x-Axis) in the visualization are the Female dogs, and the dogs that are below the time axis (x-Axis) are the Male dogs. When the cursor of the mouse is placed on each circle, the tooltip appears which tells the name of the dog and the date of flight, for clear understanding the visualization. 
+            <br><br>The below are the items that are used in this visualization: </h4>
+            <ul>
+                <li>Gender of the dog (from Dogs-database, represented as top and bottom of the axis)</li>
+                <li>Name of the dogs (from Dogs-database, represented in each circle).</li>
+                <li>Flight dates (from Dogs-database, on x-axis which is in the middle of the SVG).</li>
+                <li>Fate of the dog (from Dogs-database, represented as the color of the circle).</li>
+                <li>Dogs that traveled together (from Flights-database, represented through the links between each circle in SVG).</li>
+            </ul>
+            <br>
+            <h4>Marks, Channels and Interaction of the visualization:<br>
+        </h4>
+        <h6>
+        <ul>
+           <li> Marks: Circles(dogs), Lines(links between dogs, that traveled together).</li>
+           <li> Channels: Color(fate of dog: survived/ dead).</li>
+           <li> Interaction: Tooltip when hovered on circles.</li>
+        </ul>
+        </h6>
+        <hr style='width:100%'>
+
+        <svg id='innovative'></svg>
+    </div>
+</div>
+    <script src='index.js'></script>
+</body>
+</html>
